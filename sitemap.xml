@@ -23,14 +23,14 @@
   </url>
   
   <url>
-    <loc>https://shaoxing.vercel.app/wiki/player/Music/</loc>
+    <loc>https://shaoxing.vercel.app/wiki/player/Glory/</loc>
     
     <lastmod>2021-10-10</lastmod>
     
   </url>
   
   <url>
-    <loc>https://shaoxing.vercel.app/wiki/player/Glory/</loc>
+    <loc>https://shaoxing.vercel.app/wiki/player/Music/</loc>
     
     <lastmod>2021-10-10</lastmod>
     
@@ -72,14 +72,14 @@
   </url>
   
   <url>
-    <loc>https://shaoxing.vercel.app/wiki/bx/%E4%BA%A7%E5%93%81%E8%A7%A3%E6%9E%90/</loc>
+    <loc>https://shaoxing.vercel.app/wiki/bx/%E4%BF%9D%E9%99%A9%E6%A0%B8%E5%BF%83%E4%BB%B7%E5%80%BC/</loc>
     
     <lastmod>2021-10-10</lastmod>
     
   </url>
   
   <url>
-    <loc>https://shaoxing.vercel.app/wiki/bx/%E4%BF%9D%E9%99%A9%E6%A0%B8%E5%BF%83%E4%BB%B7%E5%80%BC/</loc>
+    <loc>https://shaoxing.vercel.app/wiki/bx/%E4%BA%A7%E5%93%81%E8%A7%A3%E6%9E%90/</loc>
     
     <lastmod>2021-10-10</lastmod>
     
@@ -135,14 +135,14 @@
   </url>
   
   <url>
-    <loc>https://shaoxing.vercel.app/e6fd5866.html</loc>
+    <loc>https://shaoxing.vercel.app/f8cb7961.html</loc>
     
     <lastmod>2021-10-10</lastmod>
     
   </url>
   
   <url>
-    <loc>https://shaoxing.vercel.app/f8cb7961.html</loc>
+    <loc>https://shaoxing.vercel.app/e6fd5866.html</loc>
     
     <lastmod>2021-10-10</lastmod>
     
@@ -214,6 +214,13 @@
   </url>
   
   <url>
+    <loc>https://shaoxing.vercel.app/tags/%E7%BD%91%E5%8D%A1/</loc>
+    <lastmod>2021-10-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://shaoxing.vercel.app/tags/%E5%90%88%E9%9B%86/</loc>
     <lastmod>2021-10-14</lastmod>
     <changefreq>daily</changefreq>
@@ -222,13 +229,6 @@
   
   <url>
     <loc>https://shaoxing.vercel.app/tags/%E8%BF%9B%E9%98%B6/</loc>
-    <lastmod>2021-10-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://shaoxing.vercel.app/tags/%E7%BD%91%E5%8D%A1/</loc>
     <lastmod>2021-10-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
