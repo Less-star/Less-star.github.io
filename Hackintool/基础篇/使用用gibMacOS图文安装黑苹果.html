@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>Hackintool：使用用gibMacOS图文安装黑苹果 - Hackintool</title>
+
+  
+    <meta name="description" content="众所周知，安装黑苹果较旧版本（比如10.13.6）镜像包难找或出现很多奇怪的毛病，如安装资源过期，安装包已损坏等（镜像包签名过期导致的，强制安装需要更改BIOS时间） 在这里，我给大家推荐一个可以不必为此项问题为难的解决方式 使用gibMacOS在Win环境下从Apple官网下载镜像制作安装盘 准备需求  准备一台win10电脑 一个1G以上U盘（做mac的启动盘） 一个有线鼠标 一个USB集线">
+<meta property="og:type" content="website">
+<meta property="og:title" content="使用用gibMacOS图文安装黑苹果">
+<meta property="og:url" content="https://hackintool.vercel.app/%E5%9F%BA%E7%A1%80%E7%AF%87/%E4%BD%BF%E7%94%A8%E7%94%A8gibMacOS%E5%9B%BE%E6%96%87%E5%AE%89%E8%A3%85%E9%BB%91%E8%8B%B9%E6%9E%9C.html">
+<meta property="og:site_name" content="Hackintool">
+<meta property="og:description" content="众所周知，安装黑苹果较旧版本（比如10.13.6）镜像包难找或出现很多奇怪的毛病，如安装资源过期，安装包已损坏等（镜像包签名过期导致的，强制安装需要更改BIOS时间） 在这里，我给大家推荐一个可以不必为此项问题为难的解决方式 使用gibMacOS在Win环境下从Apple官网下载镜像制作安装盘 准备需求  准备一台win10电脑 一个1G以上U盘（做mac的启动盘） 一个有线鼠标 一个USB集线">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/muzishaoxing/Picture@main/shaoxing/20210921/15:28-POyOoc.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/muzishaoxing/Picture@main/shaoxing/20210921/16:04-KNbUfB.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/muzishaoxing/Picture@main/shaoxing/20210921/16:05-rWS1Ym.jpg">
+<meta property="article:published_time" content="2022-01-13T08:02:11.781Z">
+<meta property="article:modified_time" content="2022-01-10T18:15:01.541Z">
+<meta property="article:author" content="黑果小六">
+<meta property="article:tag" content="黑苹果，教程，Mac">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/muzishaoxing/Picture@main/shaoxing/20210921/15:28-POyOoc.jpg">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="Hackintool" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+    
+      <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/muzishaoxing/Picture@main/uPic/avatar.png">
+    
+      <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/muzishaoxing/Picture@main/uPic/avatar.png">
+    
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='wiki'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap wiki"><a style="filter: grayscale(100%)" class="wiki-home cap" href="/"><svg aria-hidden="true" viewBox="0 0 16 16" width="1rem" height="1rem" fill="currentColor"><path fill-rule="evenodd" d="M7.78 12.53a.75.75 0 01-1.06 0L2.47 8.28a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L4.81 7h7.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"></path></svg>所有项目</a><a class="title" href="/index.html"><div class="main">Hackintool</div><div class="sub cap">黑苹果教程合集</div></a></div>
+</header>
+
+<div class="widgets">
+
+<div class="widget-wrap multi" id="toc"><div class="widget-header cap dis-select"><span class="name">序章</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/index.html"><span class="toc-text">黑苹果资源召集令</span></a></div></div><div class="widget-header cap dis-select"><span class="name">基础篇</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E9%BB%91%E8%8B%B9%E6%9E%9C(%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F).html"><span class="toc-text">黑苹果 （操作系统）</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E5%9F%BA%E7%A1%80%E7%A7%91%E6%99%AE.html"><span class="toc-text">基础科普</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B.html"><span class="toc-text">BigSur安装教程</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99.html"><span class="toc-text">安装报错</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85mac.html"><span class="toc-text">虚拟机安装MAC</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/USB%E5%AE%9A%E5%88%B6%E6%95%99%E7%A8%8B.html"><span class="toc-text">USB定制教程</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E7%BD%91%E5%8D%A1%E9%A9%B1%E5%8A%A8%E6%B8%85%E5%8D%95.html"><span class="toc-text">网卡驱动汇总</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E4%BD%BF%E7%94%A8OpenCore%E5%BC%95%E5%AF%BC%E9%BB%91%E8%8B%B9%E6%9E%9C.html"><span class="toc-text">使用 OpenCore 引导黑苹果</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%85%B1%E5%AD%98.html"><span class="toc-text">黑苹果与Windows双系统共存设置</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/RTC%E7%9A%84%E9%97%AE%E9%A2%98%E8%A1%A8%E7%8E%B0.html"><span class="toc-text">RTC综述</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/macOS%20Monterey%2012.1Beat%E7%89%88%E6%9C%AC%E5%BC%80%E5%A7%8B%E6%94%AF%E6%8C%81.html"><span class="toc-text">独显支持列表</span></a></div><div class="doc-tree active"><a class="doc-tree-link active" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E4%BD%BF%E7%94%A8%E7%94%A8gibMacOS%E5%9B%BE%E6%96%87%E5%AE%89%E8%A3%85%E9%BB%91%E8%8B%B9%E6%9E%9C.html"><span class="toc-text">使用用gibMacOS图文安装黑苹果</span></a><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="toc-text"> 使用教程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E7%99%BD%E8%AD%A6%E5%91%8A"><span class="toc-text"> 小白警告</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gibmacos%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="toc-text"> gibMacOS与环境文件下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%9C%E5%83%8F%E4%B8%8B%E8%BD%BD"><span class="toc-text"> 镜像下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAmac-recovery%E5%90%AF%E5%8A%A8%E7%9B%98"><span class="toc-text"> 创建Mac Recovery启动盘</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%99%E7%A8%8B%E6%8E%A8%E8%8D%90"><span class="toc-text"> 教程推荐</span></a></li></ol></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E5%A3%B0%E5%8D%A1ID%E6%B3%A8%E5%85%A5%E8%A1%A8.html"><span class="toc-text">黑苹果声卡ID注入表</span></a></div></div><div class="widget-header cap dis-select"><span class="name">优化篇</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/%E4%BC%98%E5%8C%96%E7%AF%87/Mac%20%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE.html"><span class="toc-text">Windows键盘-Mac快捷键</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E4%BC%98%E5%8C%96%E7%AF%87/%E4%BF%AE%E5%A4%8DApple%E7%99%BB%E9%99%86.html"><span class="toc-text">黑苹果之登陆Apple_ID「设备内建」</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E4%BC%98%E5%8C%96%E7%AF%87/%E4%B8%80%E9%94%AE%E5%BC%80%E5%90%AF%20MacOS%20HIDPI.html"><span class="toc-text">一键开启 MacOS HIDPI</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E4%BC%98%E5%8C%96%E7%AF%87/%E8%A7%A3%E5%86%B3%E7%BD%91%E7%BB%9C%E5%94%A4%E9%86%92Wi-Fi%E9%97%AE%E9%A2%98.html"><span class="toc-text">解决网络唤醒Wi-Fi问题</span></a></div></div><div class="widget-header cap dis-select"><span class="name">美化篇</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/%E7%BE%8E%E5%8C%96%E7%AF%87/Mac%E4%B8%AA%E6%80%A7%E5%8C%96%E5%92%8C%E7%BE%8E%E5%8C%96.html"><span class="toc-text">美化篇-系统logo自定义</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E7%BE%8E%E5%8C%96%E7%AF%87/%E9%BB%91%E8%8B%B9%E6%9E%9C%E4%BB%BF%E5%86%92%E7%99%BD%E6%9E%9C%E9%BC%A0%E6%A0%87.html"><span class="toc-text">美化篇-黑苹果仿冒白果鼠标</span></a></div></div><div class="widget-header cap dis-select"><span class="name">进阶篇</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E7%94%B5%E6%B1%A0%E7%83%AD%E8%A1%A5%E4%B8%81.html"><span class="toc-text">进阶篇-电池热补丁</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E4%B8%BA%E5%B0%8F%E7%99%BD%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%94%B5%E6%B1%A0%E6%95%99%E7%A8%8B.html"><span class="toc-text">进阶篇-为小白设计的电池教程</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E5%88%A9%E7%94%A8GUPC%E4%BB%A5%E7%83%AD%E8%A1%A5%E4%B8%81%E5%AE%9A%E5%88%B6USB%E7%AB%AF%E5%8F%A3.html"><span class="toc-text">进阶篇-利用GUPC以热补丁定制USB端口</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E7%94%A8%E7%83%AD%E8%A1%A5%E4%B8%81%E9%A9%B1%E5%8A%A8%E4%BD%A0%E7%9A%84%E8%A7%A6%E6%91%B8%E6%9D%BF.html"><span class="toc-text">进阶篇-用热补丁驱动你的触摸板</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E8%AE%A1%E7%AE%97Slide%E8%A7%A3%E5%86%B3%E5%86%85%E5%AD%98%E6%8A%A5%E9%94%99.html"><span class="toc-text">进阶篇-计算Slide解决内存报错</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E5%A6%82%E4%BD%95%E7%AE%80%E5%8D%95%E7%9A%84%E7%BC%96%E8%AF%91OpenCore.html"><span class="toc-text">进阶篇-如何简单的编译OpenCore</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E5%88%A9%E7%94%A8%20AppleALC%20%E9%A9%B1%E5%8A%A8%E5%A3%B0%E5%8D%A1.html"><span class="toc-text">进阶篇-利用 AppleALC 驱动声卡</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E8%8B%B1%E7%89%B9%E5%B0%94%E7%BD%91%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%B2%BE%E7%AE%80.html"><span class="toc-text">进阶篇-英特尔网卡驱动精简</span></a></div></div></div>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+  
+  
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" id="home" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" id="menu" href="/wiki/">项目</a><span class="sep"></span><a class="cap breadcrumb" id="proj" href="/index.html">Hackintool</a></div><div id="post-meta">更新于&nbsp;<time datetime="2022-01-10T18:15:01.541Z">2022-01-11</time></div></div>
+
+  <article class='content md wiki'>
+  <h1 class="article-title"><span>使用用gibMacOS图文安装黑苹果</span></h1>
+  <ul>
+<li>众所周知，安装黑苹果较旧版本（比如10.13.6）镜像包难找或出现很多奇怪的毛病，如安装资源过期，安装包已损坏等（镜像包签名过期导致的，强制安装需要更改BIOS时间）</li>
+<li>在这里，我给大家推荐一个可以不必为此项问题为难的解决方式</li>
+<li>使用<strong>gibMacOS</strong>在<strong>Win环境</strong>下从<strong>Apple官网</strong>下载镜像制作安装盘</li>
+<li>准备需求
+<ul>
+<li><strong>准备一台win10电脑</strong></li>
+<li><strong>一个1G以上U盘</strong>（做mac的启动盘）</li>
+<li>一个有线鼠标</li>
+<li>一个USB集线器（可插网线）</li>
+<li>一根网线</li>
+</ul>
+</li>
+<li>因为创建一个 USB 安装启动盘，很多资源在github在线获取，需要修改hosts文件达到Github下载提速（可参考知乎-gibhub加速）</li>
+</ul>
+<h2 id="使用教程"><a class="markdownIt-Anchor" href="#使用教程"></a> 使用教程</h2>
+<h3 id="小白警告"><a class="markdownIt-Anchor" href="#小白警告"></a> 小白警告</h3>
+<emp>为了方便阅读所有截图替换为代码填写，以下代码框内容仅供阅读！别去复制没啥用！</emp>
+<h3 id="gibmacos与环境文件下载"><a class="markdownIt-Anchor" href="#gibmacos与环境文件下载"></a> gibMacOS与环境文件下载</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/corpnewt/gibMacOS"><strong>下载gibMacOS</strong></a></li>
+<li>下图页面，点选<strong>Download ZIP</strong>下载，将其解压缩到某处
+<ul>
+<li>如无法进入：<psw>请自行科学上网</psw></li>
+</ul>
+</li>
+</ul>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/muzishaoxing/Picture@main/shaoxing/20210921/15:28-POyOoc.jpg" alt="15:28-POyOoc" /></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://pan.bilnn.com/s/1KJdcn">备用分流版gibmacOS含py</a>
+<ul>
+<li>此链接可以忽略，脚本会自动下载并安装，不过下载速度，让人堪忧。</li>
+</ul>
+</li>
+<li>下载后解压进入（目录不要包含中文），双击打开gibMacOS.bat批处理文件进入以下界面。</li>
+</ul>
+<h3 id="镜像下载"><a class="markdownIt-Anchor" href="#镜像下载"></a> 镜像下载</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  ###              ###</span><br><span class="line"> # Python Not Found #</span><br><span class="line">###              ###</span><br><span class="line"></span><br><span class="line">Python 3 was not found on the system or in the PATH var.</span><br><span class="line"></span><br><span class="line">Would you like to install it now? [y/n]:</span><br></pre></td></tr></table></figure>
+<ol>
+<li>请回复“Y”进入自动下载python，
+<ul>
+<li>此界面是因为没有python环境，如果提前安装了不会出现此界面</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  ###               ###</span><br><span class="line"> # Installing Python #</span><br><span class="line">###               ###</span><br><span class="line"></span><br><span class="line">Gathering info from https://www.python.org/downloads/windows/...</span><br><span class="line">Parsing for latest...</span><br><span class="line">Found Python 3.9.2 -  Downloading...</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>正在下载Python 3.9.2如果下载速度慢，或卡住请手动下载安装分流版！</li>
+<li>进入以下界面自动下载Catalog （如果卡住不动，请关闭代理）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  #######################################################</span><br><span class="line"> #                Downloading Catalog                  #</span><br><span class="line">#######################################################</span><br><span class="line"></span><br><span class="line">Currently downloading publicrelease catalog from</span><br><span class="line"></span><br><span class="line">https://swscan.apple.com/content/catalogs/others/index-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog</span><br><span class="line"></span><br><span class="line">Downloaded 6.90 MB of 6.90 MB (100.00%)</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>catalog下载完成后进入系统下载选择交互
+<ul>
+<li>输入下载的系统版本（菜单）对应的索引编号回车即可自动进行下载（切换）</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  #######################################################</span><br><span class="line"> #                     gibMacOS                        #</span><br><span class="line">#######################################################</span><br><span class="line"></span><br><span class="line">Available Products:</span><br><span class="line"></span><br><span class="line">1. Unknown Unknown</span><br><span class="line">- 071-05432 - Added 2021-02-15 18:03:05 - 12.21 GB</span><br><span class="line">2. macOS Catalina 10.15.7 (19H15)</span><br><span class="line">- 001-68446 - Added 2020-11-11 17:48:09 - 8.75 GB</span><br><span class="line">3. macOS Catalina 10.15.7 (19H4)</span><br><span class="line">- 001-57224 - Added 2020-10-27 17:28:13 - 8.75 GB</span><br><span class="line">4. macOS Catalina 10.15.7 (19H2)</span><br><span class="line">- 001-51042 - Added 2020-09-24 17:09:31 - 8.75 GB</span><br><span class="line">5. macOS Catalina 10.15.6 (19G2021)</span><br><span class="line">- 001-36801 - Added 2020-08-12 20:04:02 - 8.75 GB</span><br><span class="line">6. macOS Catalina 10.15.6 (19G2006)</span><br><span class="line">- 001-36735 - Added 2020-08-06 23:39:24 - 8.75 GB</span><br><span class="line">7. macOS Catalina 10.15.5 (19F2200)</span><br><span class="line">- 001-15219 - Added 2020-06-15 18:52:41 - 8.74 GB</span><br><span class="line">8. Unknown Unknown</span><br><span class="line">- 001-04366 - Added 2020-05-04 15:32:04 - 8.75 GB</span><br><span class="line">9. macOS Catalina 10.15.3 (19D2064)</span><br><span class="line">- 061-86291 - Added 2020-03-23 21:41:00 - 8.69 GB</span><br><span class="line">10. macOS Mojave 10.14.4 (18E2034)</span><br><span class="line">- 041-88800 - Added 2019-10-23 14:41:18 - 6.53 GB</span><br><span class="line">11. Install macOS High Sierra Beta 10.13.5 (17F66a)</span><br><span class="line">- 041-90855 - Added 2019-10-23 14:41:18 - 5.69 GB</span><br><span class="line">12. macOS High Sierra 10.13.6 (17G66)</span><br><span class="line">- 041-91758 - Added 2019-10-19 18:19:55 - 5.71 GB</span><br><span class="line">13. macOS Mojave 10.14.6 (18G103)</span><br><span class="line">- 061-26589 - Added 2019-10-14 20:51:08 - 6.52 GB</span><br><span class="line">14. macOS Mojave 10.14.5 (18F2059)</span><br><span class="line">- 061-26578 - Added 2019-10-14 20:38:26 - 6.52 GB</span><br><span class="line"></span><br><span class="line">M. Change Max-OS Version (Currently 10.15)</span><br><span class="line">C. Change Catalog (Currently publicrelease)</span><br><span class="line">I. Only Print URLs (Currently False)</span><br><span class="line">S. Set Current Catalog to SoftwareUpdate Catalog</span><br><span class="line">L. Clear SoftwareUpdate Catalog</span><br><span class="line">R. Toggle Recovery-Only (Currently Off)</span><br><span class="line">U. Show Catalog URL</span><br><span class="line">Q. Quit</span><br><span class="line"></span><br><span class="line">Please select an option:</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>这里讲的是恢复分区版镜像安装<u>所以我们选择菜单“**R**”即“**Toggle Recovery-Only (Currently Off**)“进入切换仅恢复模式。</u>
+<ul>
+<li>M：更改Max-0s版本(当前为10.15)</li>
+<li>C：更改目录(当前发布)</li>
+<li>I：仅打印URL(当前为Fatse)</li>
+<li>S：将当前目录设置为软件重新更新目录</li>
+<li>L：清除软件重新更新目录</li>
+<li>R：切换恢复-0nty(当前关闭)</li>
+<li>U：显示目录URL</li>
+<li>Q：退出</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  #######################################################</span><br><span class="line"> #                    Parsing Data                     #</span><br><span class="line">#######################################################</span><br><span class="line"></span><br><span class="line">Re-scanning products after url preference toggled...</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>切换中。。。请稍后！</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line">  #######################################################</span><br><span class="line"> #                     gibMacOS                        #</span><br><span class="line">#######################################################</span><br><span class="line"></span><br><span class="line">Available Products:</span><br><span class="line"></span><br><span class="line">1. macOS Mojave Security Update 2021-001 10.14.6 (18G8012)</span><br><span class="line">- 001-96205 - Added 2021-02-09 19:43:25 - 482.09 MB</span><br><span class="line">2. macOS Catalina Security Update 2021-001 10.15.7 (19H512)</span><br><span class="line">- 001-93719 - Added 2021-02-09 19:41:03 - 500.53 MB</span><br><span class="line">3. macOS Mojave Security Update 2021-002 10.14.6 (18G8022)</span><br><span class="line">- 071-05177 - Added 2021-02-09 19:39:25 - 482.18 MB</span><br><span class="line">4. macOS Catalina 10.15.7 Supplemental Update 10.15.7 (19H524)</span><br><span class="line">- 071-05425 - Added 2021-02-09 19:27:40 - 500.48 MB</span><br><span class="line">5. Security Update 2020-007 10.14.6 (18G7016)</span><br><span class="line">- 001-88083 - Added 2021-01-15 22:20:31 - 482.15 MB</span><br><span class="line">6. Security Update 2020-001 10.15.7 (19H114)</span><br><span class="line">- 001-88090 - Added 2021-01-15 22:20:11 - 500.45 MB</span><br><span class="line">7. Security Update 2020-006 10.13.6 (17G14042)</span><br><span class="line">- 001-72525 - Added 2020-11-12 19:33:55 - 486.12 MB</span><br><span class="line">8. Security Update 2020-006 10.14.6 (18G6042)</span><br><span class="line">- 001-72538 - Added 2020-11-12 19:33:00 - 482.23 MB</span><br><span class="line">9. macOS Catalina 10.15.7 (19H15)</span><br><span class="line">- 001-68446 - Added 2020-11-11 17:48:09 - 500.66 MB - FULL Install</span><br><span class="line">10. macOS Catalina 10.15.7 Supplemental Update 10.15.7 (19H15)</span><br><span class="line">- 001-73001 - Added 2020-11-05 18:13:06 - 500.66 MB</span><br><span class="line">11. macOS Catalina 10.15.7 Update 10.15.7 (19H15)</span><br><span class="line">- 001-57230 - Added 2020-11-05 18:12:55 - 500.66 MB</span><br><span class="line">12. macOS Catalina 10.15.7 (19H4)</span><br><span class="line">- 001-57224 - Added 2020-10-27 17:28:13 - 500.52 MB - FULL Install</span><br><span class="line">13. macOS Catalina 10.15.7 Update 10.15.7 (19H2)</span><br><span class="line">- 001-51032 - Added 2020-10-15 17:09:29 - 500.59 MB</span><br><span class="line">14. macOS Catalina 10.15.7 Update 10.15.7 (19H2)</span><br><span class="line">- 001-51037 - Added 2020-10-15 17:09:15 - 500.59 MB</span><br><span class="line">15. Security Update 2020-005 10.14.6 (18G6032)</span><br><span class="line">- 001-48327 - Added 2020-10-01 22:08:39 - 482.26 MB</span><br><span class="line">16. Security Update 2020-005 10.13.6 (17G14033)</span><br><span class="line">- 001-48382 - Added 2020-09-24 17:16:25 - 486.14 MB</span><br><span class="line">17. macOS Catalina 10.15.7 (19H2)</span><br><span class="line">- 001-51042 - Added 2020-09-24 17:09:31 - 500.59 MB - FULL Install</span><br><span class="line">18. macOS Catalina 10.15.6 Supplemental Update 10.15.6 (19G2021)</span><br><span class="line">- 001-36816 - Added 2020-09-04 17:10:43 - 500.45 MB</span><br><span class="line">19. macOS Catalina 10.15.6 Update 10.15.6 (19G2021)</span><br><span class="line">- 001-22632 - Added 2020-09-04 17:10:19 - 500.45 MB</span><br><span class="line">20. macOS Catalina 10.15.6 Update 10.15.6 (19G2021)</span><br><span class="line">- 001-22626 - Added 2020-09-04 17:09:38 - 500.45 MB</span><br><span class="line">21. Security Update 2020-004 10.13.6 (17G14019)</span><br><span class="line">- 001-08570 - Added 2020-09-04 17:09:02 - 486.03 MB</span><br><span class="line">22. Security Update 2020-004 10.14.6 (18G6020)</span><br><span class="line">- 001-26311 - Added 2020-09-04 17:08:26 - 482.16 MB</span><br><span class="line">23. macOS 10.15.6 Update 10.15.6 (19G73)</span><br><span class="line">- 061-94461 - Added 2020-09-04 17:07:35 - 500.42 MB</span><br><span class="line">24. macOS 10.15.6 Update 10.15.6 (19G73)</span><br><span class="line">- 061-94457 - Added 2020-09-04 17:06:00 - 500.42 MB</span><br><span class="line">25. macOS Catalina 10.15.5 Update 10.15.5 (19F101)</span><br><span class="line">- 001-12343 - Added 2020-09-04 17:05:08 - 500.23 MB</span><br><span class="line">26. macOS Catalina 10.15.5 Update 10.15.5 (19F101)</span><br><span class="line">- 001-12341 - Added 2020-09-04 17:04:24 - 500.23 MB</span><br><span class="line">27. macOS Catalina 10.15.5 Supplemental Update 10.15.5 (19F101)</span><br><span class="line">- 001-12339 - Added 2020-09-04 17:03:54 - 500.23 MB</span><br><span class="line">28. macOS Catalina 10.15.6 (19G2021)</span><br><span class="line">- 001-36801 - Added 2020-08-12 20:04:02 - 500.45 MB - FULL Install</span><br><span class="line">29. macOS Catalina 10.15.6 (19G2006)</span><br><span class="line">- 001-36735 - Added 2020-08-06 23:39:24 - 500.45 MB - FULL Install</span><br><span class="line">30. macOS Catalina 10.15.5 (19F2200)</span><br><span class="line">- 001-15219 - Added 2020-06-15 18:52:41 - 500.36 MB - FULL Install</span><br><span class="line">31. macOS Catalina 10.15.5 Supplemental Update 10.15.5 (19F2200)</span><br><span class="line">- 061-78585 - Added 2020-06-15 17:00:03 - 500.36 MB</span><br><span class="line">32. macOS Catalina 10.15.4 (19E2269)</span><br><span class="line">- 001-04366 - Added 2020-05-04 15:32:04 - 500.02 MB - FULL Install</span><br><span class="line">33. macOS Catalina 10.15.3 (19D2064)</span><br><span class="line">- 061-86291 - Added 2020-03-23 21:41:00 - 499.55 MB - FULL Install</span><br><span class="line">34. macOS Mojave 10.14.6 Supplemental Update 2 10.14.6 (18G103)</span><br><span class="line">- 061-41417 - Added 2019-10-24 18:25:52 - 481.99 MB</span><br><span class="line">35. macOS 10.14.6 Update 10.14.6 (18G103)</span><br><span class="line">- 061-41421 - Added 2019-10-24 18:24:51 - 481.99 MB</span><br><span class="line">36. macOS 10.14.6 Update 10.14.6 (18G103)</span><br><span class="line">- 061-41419 - Added 2019-10-24 18:22:50 - 481.99 MB</span><br><span class="line">37. MacBook Pro Supplemental Update 10.14.5 (18F203)</span><br><span class="line">- 041-88834 - Added 2019-10-23 17:12:57 - 481.55 MB</span><br><span class="line">38. macOS Mojave 10.14.4 (18E2034)</span><br><span class="line">- 041-88800 - Added 2019-10-23 14:41:18 - 491.50 MB - FULL Install</span><br><span class="line">39. Install macOS High Sierra Beta 10.13.5 (17F66a)</span><br><span class="line">- 041-90855 - Added 2019-10-23 14:41:18 - 486.92 MB - FULL Install</span><br><span class="line">40. macOS High Sierra 10.13.6 (17G66)</span><br><span class="line">- 041-91758 - Added 2019-10-19 18:19:55 - 487.84 MB - FULL Install</span><br><span class="line">41. macOS 10.14.2 Update Combo 10.14.2 (18C54)</span><br><span class="line">- 041-88764 - Added 2019-10-15 20:19:46 - 487.16 MB</span><br><span class="line">42. macOS Mojave 10.14.6 (18G103)</span><br><span class="line">- 061-26589 - Added 2019-10-14 20:51:08 - 481.99 MB - FULL Install</span><br><span class="line">43. macOS Mojave 10.14.5 (18F2059)</span><br><span class="line">- 061-26578 - Added 2019-10-14 20:38:26 - 481.64 MB - FULL Install</span><br><span class="line">44. macOS 10.14.2 Update 10.14.2 (18C54)</span><br><span class="line">- 041-91742 - Added 2019-10-09 19:42:38 - 487.16 MB</span><br><span class="line"></span><br><span class="line">M. Change Max-OS Version (Currently 10.15)</span><br><span class="line">C. Change Catalog (Currently publicrelease)</span><br><span class="line">I. Only Print URLs (Currently False)</span><br><span class="line">S. Set Current Catalog to SoftwareUpdate Catalog</span><br><span class="line">L. Clear SoftwareUpdate Catalog</span><br><span class="line">R. Toggle Recovery-Only (Currently On)</span><br><span class="line">U. Show Catalog URL</span><br><span class="line">Q. Quit</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>进入仅恢复镜像模式，所出现系统版本尾部带有关字“<strong>FULL Install</strong>”即是恢复分区镜像安装包，输入对应的索引编号即可进入下载！</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">17. macOS Catalina 10.15.7 (19H2)</span><br><span class="line">- 001-51042 - Added 2020-09-24 17:09:31 - 500.59 MB - FULL Install</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>例如：我选择下载Catalina 10.15.7 (19H2)则输入对应索引编号“17”系统会自动进入下载。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  #######################################################</span><br><span class="line"> #              Downloading File 1 of 1                #</span><br><span class="line">#######################################################</span><br><span class="line"></span><br><span class="line">Downloading RecoveryHDMetaDmg.pkg for 001-68446 - 10.15.7 macOS Catalina...</span><br><span class="line"></span><br><span class="line">Downloaded 103.81 MB of 500.66 MB (20.53%)</span><br></pre></td></tr></table></figure>
+<ol start="9">
+<li>开始下载，下载进度条跑到（100%）会自动跳到下载成功界面</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  #######################################################</span><br><span class="line"> #                 Downloaded 1 of 1                   #</span><br><span class="line">#######################################################</span><br><span class="line"></span><br><span class="line">Succeeded:</span><br><span class="line">RecoveryHDMetaDmg.pkg</span><br><span class="line"></span><br><span class="line">Failed:</span><br><span class="line">None</span><br><span class="line"></span><br><span class="line">Files saved to:</span><br><span class="line">  C:\Users\******\Desktop\gibMacOS-master\macOS Downloads\publicrelease\001-51042 - 10.15.7 macOS Catalina</span><br><span class="line"></span><br><span class="line">Press [enter] to return...</span><br></pre></td></tr></table></figure>
+<ol start="10">
+<li>出现此界面表示下载成功，此时可以关闭gibMacOS.batgibMacOS.bat窗口了，此脚本暂时已经完成使用。</li>
+</ol>
+<h3 id="创建mac-recovery启动盘"><a class="markdownIt-Anchor" href="#创建mac-recovery启动盘"></a> 创建Mac Recovery启动盘</h3>
+<ol>
+<li>此时需要<del>关闭gibMacOS.bat</del>打开<strong>MakeInstall.bat</strong>创建Mac Recovery启动盘</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  #######################################################</span><br><span class="line"> #              Checking Required Tools                #</span><br><span class="line">#######################################################</span><br><span class="line"></span><br><span class="line">Couldn&#x27;t locate ddrelease64.exe - downloading...</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>正在下载关键性组件。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#######################################################</span><br><span class="line">#             Potential Removable Media               #</span><br><span class="line">#######################################################</span><br><span class="line"></span><br><span class="line">!WARNING!  This list includes both Removable AND</span><br><span class="line">!WARNING!  Unknown disk types.  Be ABSOLUTELY sure</span><br><span class="line">!WARNING!  before selecting a disk!</span><br><span class="line"></span><br><span class="line">1. SDXC Card - 62.54 GB (Removable)</span><br><span class="line">   0. I: (SD) exFAT - 62.53 GB</span><br><span class="line">2. General UDisk USB Device - 16.04 GB (Removable)</span><br><span class="line">   0. F: (BOOT) FAT32 - 205.52 MB</span><br><span class="line"></span><br><span class="line">Q. Quit</span><br><span class="line"></span><br><span class="line">Usage: [drive number][option (only one allowed)] r[Clover revision (optional)]</span><br><span class="line">  (eg. 1B r5092)</span><br><span class="line">  Options are as follows with precedence B &gt; E &gt; U &gt; G:</span><br><span class="line">    B = Only install the boot manager to the drive&#x27;s first partition.</span><br><span class="line">    O = Use OpenCore instead of Clover.</span><br><span class="line">    E = Sets the type of the drive&#x27;s first partition to EFI.</span><br><span class="line">    U = Similar to E, but sets the type to Basic Data (useful for editing).</span><br><span class="line">    G = Format as GPT (default is MBR).</span><br><span class="line">    D = Used without a drive number, toggles showing all disks (currently DISABLED).</span><br><span class="line"></span><br><span class="line">Please select a disk or press [enter] with no options to refresh:</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>扫描并识别U盘创建索引</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. SDXC Card - 62.54 GB (Removable)</span><br><span class="line">   0. I: (SD) exFAT - 62.53 GB</span><br><span class="line">2. General UDisk USB Device - 16.04 GB (Removable)</span><br><span class="line">   0. F: (BOOT) FAT32 - 205.52 MB</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>这里是扫面到的U盘信息。选择对应索引值进入下一步，
+<ul>
+<li>PS：此处可以直接输入索引值+O，写入U盘并替换默认引导为 OpenCore</li>
+<li>如：2O（是字母O。不是数字0，不区分大小写）</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#######################################################</span><br><span class="line">#          Erase General UDisk USB Device             #</span><br><span class="line">#######################################################</span><br><span class="line"></span><br><span class="line">2. General UDisk USB Device - 16.04 GB (Removable)</span><br><span class="line"></span><br><span class="line">If you continue - THIS DISK WILL BE ERASED</span><br><span class="line">ALL DATA WILL BE LOST AND ALL PARTITIONS WILL</span><br><span class="line">BE REMOVED!!!!!!!</span><br><span class="line"></span><br><span class="line">Continue? (y/n):</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>是否继续
+<ul>
+<li>继续请回复：Y <sub class="tag-plugin sub" >此磁盘将被擦除，所有数据都将丢失，所有分区都将被除名！</sub></li>
+<li>返回请回复：N <sub class="tag-plugin sub" >返回上一步</sub></li>
+</ul>
+</li>
+<li>选择Y后进入</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">  #######################################################</span><br><span class="line"> #               Erasing With DiskPart                 #</span><br><span class="line">#######################################################</span><br><span class="line"></span><br><span class="line">Using MBR...</span><br><span class="line"></span><br><span class="line">Microsoft DiskPart 版本 10.0.19041.610</span><br><span class="line"></span><br><span class="line">Copyright (C) Microsoft Corporation.</span><br><span class="line">在计算机上: 少星</span><br><span class="line"></span><br><span class="line">磁盘 2 现在是所选磁盘。</span><br><span class="line"></span><br><span class="line">DiskPart 成功地清除了磁盘。</span><br><span class="line"></span><br><span class="line">DiskPart 已将所选磁盘成功地转更换为 MBR 格式。</span><br><span class="line"></span><br><span class="line">DiskPart 成功地创建了指定分区。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">0 百分比已完成</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>正在创建启动盘分区</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#######################################################</span><br><span class="line">#              Select Recovery Package                #</span><br><span class="line">#######################################################</span><br><span class="line"></span><br><span class="line">2. General UDisk USB Device - 16.04 GB (Removable)</span><br><span class="line"></span><br><span class="line">M. Main Menu</span><br><span class="line">Q. Quit</span><br><span class="line"></span><br><span class="line">Please paste the recovery update pkg path to extract:</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>这时候将下载好的镜像安装包路径复制并填写进去回车键下一步</li>
+<li>可通过右上角搜索pkg查找到文件所在位置<br />
+<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/muzishaoxing/Picture@main/shaoxing/20210921/16:04-KNbUfB.jpg" alt="16:04-KNbUfB" /></li>
+<li>其他方式</li>
+</ol>
+<ul>
+<li>方式1：点选RecoveryHDMetaDmg.pkg后按住shift键+鼠标右键，列表会新增复制为路径选项</li>
+<li>方式2:点选后鼠标右键右键-属性-安全-对象名称</li>
+<li>（获得文件路径方式有很多种，根据自己所知，本方式只是举例说明）<br />
+<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/muzishaoxing/Picture@main/shaoxing/20210921/16:05-rWS1Ym.jpg" alt="16:05-rWS1Ym" /></li>
+</ul>
+<p>11.将其复制，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\******\Desktop\gibMacOS-master\macOS Downloads\publicrelease\001-51042 - 10.15.7 macOS Catalina\RecoveryHDMetaDmg.pkg</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ol start="12">
+<li>填写后回车进入下一步</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  #######################################################</span><br><span class="line"> #              Copying Image To Drive                 #</span><br><span class="line">#######################################################</span><br><span class="line"></span><br><span class="line">Image: C:\Users\******\AppData\Local\Temp\tmpquddq8yk\4.hfs</span><br><span class="line"></span><br><span class="line">Disk 2. General UDisk USB Device - 16.04 GB (Removable)</span><br><span class="line"></span><br><span class="line">C:\Users\******\Desktop\gibMacOS-master\Scripts\ddrelease64.exe if=C:\Users\26278\AppData\Local\Temp\tmpquddq8yk\4.hfs of=\\?\Device\Harddisk2\Partition2 bs=8M --progress</span><br><span class="line"></span><br><span class="line">This may take some time!</span><br></pre></td></tr></table></figure>
+<ol start="13">
+<li>正在将镜像恢复到驱动器，这可能需要点时间。（请等待）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  #######################################################</span><br><span class="line"> #            Installing Clover - Latest               #</span><br><span class="line">#######################################################</span><br><span class="line"></span><br><span class="line">Gathering info...</span><br><span class="line">- Checking https://api.github.com/repos/dids/clover-builder/releases</span><br><span class="line">- Got CloverISO-5122.tar.lzma</span><br><span class="line">Downloading...</span><br><span class="line">Downloaded 2.54 MB of 2.54 MB (100.00%)</span><br><span class="line">Extracting CloverISO-5122.tar.lzma...</span><br><span class="line">Extracting CloverISO-5122.tar...</span><br><span class="line">Extracting EFI from Clover-5122-X64.iso...</span><br><span class="line">Extracting boot0af from Clover-5122-X64.iso...</span><br><span class="line">Extracting boot1f32alt from Clover-5122-X64.iso...</span><br><span class="line">Extracting boot6 from Clover-5122-X64.iso...</span><br><span class="line">Copying EFI folder to F:/EFI...</span><br><span class="line">Copying boot6 to F:/boot...</span><br><span class="line">Updating the MBR with boot0af...</span><br><span class="line">Updating the PBR with boot1f32alt...</span><br><span class="line">Cleaning up...</span><br><span class="line"></span><br><span class="line">Done.</span><br><span class="line"></span><br><span class="line">Press [enter] to return to the main menu...</span><br></pre></td></tr></table></figure>
+<ol start="14">
+<li>已经写好启动盘，此时重新打开会看到U盘分区名称变成BOOT打开包含</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>EFI</th>
+<th>引导底包（默认四叶草）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boot</td>
+<td>模拟UEFI启动</td>
+</tr>
+</tbody>
+</table>
+<ol start="15">
+<li>回车&gt;返回上一步后&gt;输入O可切换底包为最新版OpenCore</li>
+</ol>
+<ul>
+<li>O = Use OpenCore instead of Clover.</li>
+<li>选择oc引导而不是四叶草</li>
+</ul>
+<emp>注：底包不能直接使用需要根据你的设备进行配置并加载驱动！</emp>
+<emp>注：目前OpenCore支持率大势所趋，如自制引导请选用OpenCore</emp>
+<emp>推荐自带引导写入！！！</emp>
+<h2 id="教程推荐"><a class="markdownIt-Anchor" href="#教程推荐"></a> 教程推荐</h2>
+<ul>
+<li>如果你有现成的EFI文件直接替换即可，如果没有你可能需要以下内容：</li>
+<li>OpenCore详解：<a target="_blank" rel="noopener" href="https://blog.daliansky.net/OpenCore-BootLoader.html">https://blog.daliansky.net/OpenCore-BootLoader.html</a></li>
+<li>OpenCore配置视频版
+<ul>
+<li>上集https://www.bilibili.com/video/BV1854y1S7fs</li>
+<li>下集https://www.bilibili.com/video/BV1Xa4y1E7AU</li>
+</ul>
+</li>
+<li>网卡驱动合集：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/s7HgTlHzhbUwLAHxaKTMAA">https://mp.weixin.qq.com/s/s7HgTlHzhbUwLAHxaKTMAA</a></li>
+<li>通用EFI架构包：<a target="_blank" rel="noopener" href="https://share.olaindex.com/t/w4L6prDXA3Hackintosh">https://share.olaindex.com/t/w4L6prDXA3Hackintosh</a>
+<ul>
+<li>备用链接：<a target="_blank" rel="noopener" href="https://cloud.189.cn/t/uEfmMvMFnyIb">https://cloud.189.cn/t/uEfmMvMFnyIb</a></li>
+</ul>
+</li>
+<li>黑苹果长期维护机型整理清单：<a target="_blank" rel="noopener" href="https://blog.daliansky.net/Hackintosh-long-term-maintenance-model-checklist.html">https://blog.daliansky.net/Hackintosh-long-term-maintenance-model-checklist.html</a></li>
+</ul>
+
+  
+
+
+  </article>
+  
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/%E4%BC%98%E5%8C%96%E7%AF%87/Mac%20%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE.html">Windows键盘-Mac快捷键<span class="note">下一篇</span></a><div class="line"></div><a id="prev" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/RTC%E7%9A%84%E9%97%AE%E9%A2%98%E8%A1%A8%E7%8E%B0.html">RTC综述<span class="note">上一篇</span></a></section></div>
+
+  
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body valine'>
+      
+
+<div id="valine_container" class="valine_thread"><svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+
+    </div>
+  </div>
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="https://hackintool.vercel.app/">@黑果小六</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.4.1" title="v1.4.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.4.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper/swiper-bundle.min.css","js":"https://unpkg.com/swiper/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function getEmojiMaps() {
+    function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+    }
+    var emojiMaps = {};
+    for (var i = 1; i <= 54; i++) {
+      emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+    }
+    for (var i = 1; i <= 101; i++) {
+      emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+    }
+    for (var i = 1; i <= 116; i++) {
+      emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+    }
+    for (var i = 1; i <= 125; i++) {
+      emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+    }
+    for (var i = 1; i <= 4; i++) {
+      emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+    }
+    return emojiMaps;
+  }
+  function load_comment(){
+    if(!document.getElementById("valine_container"))return;
+    stellar.loadScript('https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js', {defer:true}).then(function () {
+      const el = document.getElementById("valine_container");
+      var path = el.getAttribute('comment_id');
+      const placeholder = "踏雪怎无痕？少侠，请留下你的观点！";
+      if (!path) {
+        path = decodeURI(window.location.pathname);
+      }
+      var valine = new Valine();
+      valine.init(Object.assign({"js":"https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js","appId":"Fe8IQPAHLnCOYlAJj9iniimO-gzGzoHsz","appKey":"qNvWByTiszf1JtzWBY2jfUeb","placeholder":"踏雪怎无痕？少侠，请留下你的观点！","requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"mp","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"metaPlaceholder":{"nick":"昵称/QQ号(必填)","mail":"邮箱（如需得到我的追踪，请填写）","link":"网址(https://)"},"master":"md5加密后的博主邮箱 - c47fcf3ef7606331","friends":["6783037F2DF30EAB99F9FC256157D875",null]}, {
+        el: '#valine_container',
+        path: path,
+        placeholder: placeholder,
+        emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+        emojiMaps: getEmojiMaps(),
+      }));
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    load_comment();
+  });
+
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

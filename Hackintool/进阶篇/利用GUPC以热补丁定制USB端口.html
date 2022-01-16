@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>Hackintool：进阶篇-利用GUPC以热补丁定制USB端口 - Hackintool</title>
+
+  
+    <meta name="description" content="版权©️声明 : 本文章神楽小白(GZ小白)的部落阁     前言 虽然之前就有用热补丁定制USB端口的方法，但那个方法需要搭配USBAllinject.kext使用，在受到Github中一个issue的启发后，我们发现，可以利用ACPI中的GUPC实现USB端口的热补丁定制。最后，通过咨询了哞大相关问题，发此贴，提供方法。 Github的issue链接如下：https:&#x2F;&#x2F;github.com">
+<meta property="og:type" content="website">
+<meta property="og:title" content="进阶篇-利用GUPC以热补丁定制USB端口">
+<meta property="og:url" content="https://hackintool.vercel.app/%E8%BF%9B%E9%98%B6%E7%AF%87/%E5%88%A9%E7%94%A8GUPC%E4%BB%A5%E7%83%AD%E8%A1%A5%E4%B8%81%E5%AE%9A%E5%88%B6USB%E7%AB%AF%E5%8F%A3.html">
+<meta property="og:site_name" content="Hackintool">
+<meta property="og:description" content="版权©️声明 : 本文章神楽小白(GZ小白)的部落阁     前言 虽然之前就有用热补丁定制USB端口的方法，但那个方法需要搭配USBAllinject.kext使用，在受到Github中一个issue的启发后，我们发现，可以利用ACPI中的GUPC实现USB端口的热补丁定制。最后，通过咨询了哞大相关问题，发此贴，提供方法。 Github的issue链接如下：https:&#x2F;&#x2F;github.com">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-13T08:02:11.779Z">
+<meta property="article:modified_time" content="2022-01-03T04:48:58.561Z">
+<meta property="article:author" content="黑果小六">
+<meta property="article:tag" content="黑苹果，教程，Mac">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="Hackintool" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+    
+      <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/muzishaoxing/Picture@main/uPic/avatar.png">
+    
+      <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/muzishaoxing/Picture@main/uPic/avatar.png">
+    
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='wiki'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap wiki"><a style="filter: grayscale(100%)" class="wiki-home cap" href="/"><svg aria-hidden="true" viewBox="0 0 16 16" width="1rem" height="1rem" fill="currentColor"><path fill-rule="evenodd" d="M7.78 12.53a.75.75 0 01-1.06 0L2.47 8.28a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L4.81 7h7.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"></path></svg>所有项目</a><a class="title" href="/index.html"><div class="main">Hackintool</div><div class="sub cap">黑苹果教程合集</div></a></div>
+</header>
+
+<div class="widgets">
+
+<div class="widget-wrap multi" id="toc"><div class="widget-header cap dis-select"><span class="name">序章</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/index.html"><span class="toc-text">黑苹果资源召集令</span></a></div></div><div class="widget-header cap dis-select"><span class="name">基础篇</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E9%BB%91%E8%8B%B9%E6%9E%9C(%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F).html"><span class="toc-text">黑苹果 （操作系统）</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E5%9F%BA%E7%A1%80%E7%A7%91%E6%99%AE.html"><span class="toc-text">基础科普</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B.html"><span class="toc-text">BigSur安装教程</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99.html"><span class="toc-text">安装报错</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85mac.html"><span class="toc-text">虚拟机安装MAC</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/USB%E5%AE%9A%E5%88%B6%E6%95%99%E7%A8%8B.html"><span class="toc-text">USB定制教程</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E7%BD%91%E5%8D%A1%E9%A9%B1%E5%8A%A8%E6%B8%85%E5%8D%95.html"><span class="toc-text">网卡驱动汇总</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E4%BD%BF%E7%94%A8OpenCore%E5%BC%95%E5%AF%BC%E9%BB%91%E8%8B%B9%E6%9E%9C.html"><span class="toc-text">使用 OpenCore 引导黑苹果</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%85%B1%E5%AD%98.html"><span class="toc-text">黑苹果与Windows双系统共存设置</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/RTC%E7%9A%84%E9%97%AE%E9%A2%98%E8%A1%A8%E7%8E%B0.html"><span class="toc-text">RTC综述</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/macOS%20Monterey%2012.1Beat%E7%89%88%E6%9C%AC%E5%BC%80%E5%A7%8B%E6%94%AF%E6%8C%81.html"><span class="toc-text">独显支持列表</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E4%BD%BF%E7%94%A8%E7%94%A8gibMacOS%E5%9B%BE%E6%96%87%E5%AE%89%E8%A3%85%E9%BB%91%E8%8B%B9%E6%9E%9C.html"><span class="toc-text">使用用gibMacOS图文安装黑苹果</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E5%A3%B0%E5%8D%A1ID%E6%B3%A8%E5%85%A5%E8%A1%A8.html"><span class="toc-text">黑苹果声卡ID注入表</span></a></div></div><div class="widget-header cap dis-select"><span class="name">优化篇</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/%E4%BC%98%E5%8C%96%E7%AF%87/Mac%20%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE.html"><span class="toc-text">Windows键盘-Mac快捷键</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E4%BC%98%E5%8C%96%E7%AF%87/%E4%BF%AE%E5%A4%8DApple%E7%99%BB%E9%99%86.html"><span class="toc-text">黑苹果之登陆Apple_ID「设备内建」</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E4%BC%98%E5%8C%96%E7%AF%87/%E4%B8%80%E9%94%AE%E5%BC%80%E5%90%AF%20MacOS%20HIDPI.html"><span class="toc-text">一键开启 MacOS HIDPI</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E4%BC%98%E5%8C%96%E7%AF%87/%E8%A7%A3%E5%86%B3%E7%BD%91%E7%BB%9C%E5%94%A4%E9%86%92Wi-Fi%E9%97%AE%E9%A2%98.html"><span class="toc-text">解决网络唤醒Wi-Fi问题</span></a></div></div><div class="widget-header cap dis-select"><span class="name">美化篇</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/%E7%BE%8E%E5%8C%96%E7%AF%87/Mac%E4%B8%AA%E6%80%A7%E5%8C%96%E5%92%8C%E7%BE%8E%E5%8C%96.html"><span class="toc-text">美化篇-系统logo自定义</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E7%BE%8E%E5%8C%96%E7%AF%87/%E9%BB%91%E8%8B%B9%E6%9E%9C%E4%BB%BF%E5%86%92%E7%99%BD%E6%9E%9C%E9%BC%A0%E6%A0%87.html"><span class="toc-text">美化篇-黑苹果仿冒白果鼠标</span></a></div></div><div class="widget-header cap dis-select"><span class="name">进阶篇</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E7%94%B5%E6%B1%A0%E7%83%AD%E8%A1%A5%E4%B8%81.html"><span class="toc-text">进阶篇-电池热补丁</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E4%B8%BA%E5%B0%8F%E7%99%BD%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%94%B5%E6%B1%A0%E6%95%99%E7%A8%8B.html"><span class="toc-text">进阶篇-为小白设计的电池教程</span></a></div><div class="doc-tree active"><a class="doc-tree-link active" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E5%88%A9%E7%94%A8GUPC%E4%BB%A5%E7%83%AD%E8%A1%A5%E4%B8%81%E5%AE%9A%E5%88%B6USB%E7%AB%AF%E5%8F%A3.html"><span class="toc-text">进阶篇-利用GUPC以热补丁定制USB端口</span></a><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-text"> 基本原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%AE%9A%E5%88%B6"><span class="toc-text"> 实现定制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-text"> 结语</span></a></li></ol></div><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E7%94%A8%E7%83%AD%E8%A1%A5%E4%B8%81%E9%A9%B1%E5%8A%A8%E4%BD%A0%E7%9A%84%E8%A7%A6%E6%91%B8%E6%9D%BF.html"><span class="toc-text">进阶篇-用热补丁驱动你的触摸板</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E8%AE%A1%E7%AE%97Slide%E8%A7%A3%E5%86%B3%E5%86%85%E5%AD%98%E6%8A%A5%E9%94%99.html"><span class="toc-text">进阶篇-计算Slide解决内存报错</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E5%A6%82%E4%BD%95%E7%AE%80%E5%8D%95%E7%9A%84%E7%BC%96%E8%AF%91OpenCore.html"><span class="toc-text">进阶篇-如何简单的编译OpenCore</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E5%88%A9%E7%94%A8%20AppleALC%20%E9%A9%B1%E5%8A%A8%E5%A3%B0%E5%8D%A1.html"><span class="toc-text">进阶篇-利用 AppleALC 驱动声卡</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E8%8B%B1%E7%89%B9%E5%B0%94%E7%BD%91%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%B2%BE%E7%AE%80.html"><span class="toc-text">进阶篇-英特尔网卡驱动精简</span></a></div></div></div>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+  
+  
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" id="home" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" id="menu" href="/wiki/">项目</a><span class="sep"></span><a class="cap breadcrumb" id="proj" href="/index.html">Hackintool</a></div><div id="post-meta">更新于&nbsp;<time datetime="2022-01-03T04:48:58.561Z">2022-01-03</time></div></div>
+
+  <article class='content md wiki'>
+  <h1 class="article-title"><span>进阶篇-利用GUPC以热补丁定制USB端口</span></h1>
+  <blockquote>
+<p>版权©️声明 : 本文章<a target="_blank" rel="noopener" href="https://blog.gzxiaobai.cn">神楽小白(GZ小白)的部落阁 </a></p>
+</blockquote>
+<hr />
+<h2 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h2>
+<p>虽然之前就有用热补丁定制USB端口的方法，但那个方法需要搭配<strong>USBAllinject.kext</strong>使用，在受到Github中一个issue的启发后，我们发现，可以利用ACPI中的<strong>GUPC</strong>实现USB端口的热补丁定制。最后，通过咨询了<strong>哞大</strong>相关问题，发此贴，提供方法。</p>
+<p>Github的issue链接如下：<a target="_blank" rel="noopener" href="https://github.com/daliansky/OC-little/issues/18">https://github.com/daliansky/OC-little/issues/18</a></p>
+<span id="more"></span>
+<h2 id="基本原理"><a class="markdownIt-Anchor" href="#基本原理"></a> 基本原理</h2>
+<p>我们这边就以那个issue为样例进行说明</p>
+<p>机型原始<strong>GUPC</strong>方法为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Method (GUPC, 1, Serialized)</span><br><span class="line">&#123;</span><br><span class="line">    Name (PCKG, Package (0x04)</span><br><span class="line">    &#123;</span><br><span class="line">        Zero, </span><br><span class="line">        0xFF, </span><br><span class="line">        Zero, </span><br><span class="line">        Zero</span><br><span class="line">    &#125;)</span><br><span class="line">    PCKG [Zero] = Arg0</span><br><span class="line">    Return (PCKG)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先，我们先来了解下PkgObj的一些基本知识</p>
+<p>在<code>PCKG, Package (0x04)</code>中，我们不难发现 <strong>0x04</strong> 对应了下面的四个项，也就是 <code>Zero</code>、<code>0xFF</code>、<code>Zero</code>、<code>Zero</code>这些，也就是说，Pkg下有几个项，这里的值就对应是多少，比如有三个那么就是 <strong>0x03</strong> (<strong><u>PS：这里的值为16进制</u></strong>)</p>
+<p>然后，我们再来看Pkg中的项的位置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">···</span><br><span class="line">    Name (PCKG, Package (0x04)</span><br><span class="line">    &#123;</span><br><span class="line">        Zero, //第一个项的位置为：Zero</span><br><span class="line">        0xFF, //第二个项的位置为：One</span><br><span class="line">        Zero, //第三个项的位置为：0x03</span><br><span class="line">        Zero  //第四个项的位置为：0x04</span><br><span class="line">    &#125;)</span><br><span class="line">    PCKG [Zero] = Arg0</span><br><span class="line">    Return (PCKG)</span><br><span class="line">···</span><br></pre></td></tr></table></figure>
+<p>这样子应该就一目了然了吧，以此类推下去就行，记住一点，初始位并不是 <strong>One</strong> 而是 <strong>Zero</strong></p>
+<h2 id="实现定制"><a class="markdownIt-Anchor" href="#实现定制"></a> 实现定制</h2>
+<p>这里我们给出一个修改完成的样例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">DefinitionBlock (&quot;&quot;, &quot;SSDT&quot;, 2, &quot;INTEL&quot;, &quot;GUPC&quot;, 0x00000000)</span><br><span class="line">&#123;</span><br><span class="line">    External (_SB.PCI0.XHC.RHUB, DeviceObj)</span><br><span class="line">    External (_SB.PCI0.XHC.RHUB.XUPC, MethodObj)</span><br><span class="line">    </span><br><span class="line">    Scope (_SB.PCI0.XHC.RHUB)</span><br><span class="line">    &#123;</span><br><span class="line">        Name (USBP, Zero)</span><br><span class="line">        Method (GUPC, 1, Serialized)</span><br><span class="line">        &#123;</span><br><span class="line">            If (_OSI (&quot;Darwin&quot;))</span><br><span class="line">            &#123;</span><br><span class="line">                Name (PCKG, Package (0x04)</span><br><span class="line">                &#123;</span><br><span class="line">                    0xFF, </span><br><span class="line">                    0x03, </span><br><span class="line">                    Zero, </span><br><span class="line">                    Zero</span><br><span class="line">                &#125;)</span><br><span class="line">                USBP += One</span><br><span class="line">                If (((USBP == 0x04) || (Arg0 == Zero)))</span><br><span class="line">                &#123;</span><br><span class="line">                    PCKG [Zero] = Zero</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                If ((((USBP == 0x04) || (USBP == 0x05)) || (USBP == 0x06)))</span><br><span class="line">                &#123;</span><br><span class="line">                    PCKG [One] = 0xFF</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                Return (PCKG) </span><br><span class="line">            &#125;</span><br><span class="line">            Else</span><br><span class="line">            &#123;</span><br><span class="line">                Return (XUPC(Arg0))</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们来一一解释一下，我们要明白在ACPI中，每个端口都有对应的<code>_UPC</code>方法来返回<code>GUPC</code>的值来确定端口的<strong>状态(开启或者关闭)<strong>以及</strong>类型</strong>，<code>_UPC</code>方法见下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Method (_UPC, 0, NotSerialized) </span><br><span class="line">&#123;</span><br><span class="line">    Return (GUPC(One)) </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那这个返回语句中的<strong>One</strong>是什么意思呢？其实这个<strong>One</strong>赋值给了<strong>GUPC</strong>方法中的<strong>Arg0</strong>，我们看到原来的<strong>GUPC</strong>方法中，有这个一句：<code>PCKG [Zero] = Arg0</code>，也就是这个端口在返回<strong>GUPC</strong>这个方法时。将<strong>Arg0</strong>赋值为了<strong>One</strong>，那么<code>PCKG [Zero] = Arg0</code>中，<strong>PCKG</strong>后面跟着的<strong>Zero</strong>又是什么意思呢？这个其实联系我之前讲的Pkg中<strong>项的位置</strong>就很好理解了，这里对应的就是<strong>PCKG中Zero位置的项</strong>，那么整句话的意思就是：<strong><u>将PCKG这个Pkg中Zero位置的项覆盖为Arg0的值</u></strong></p>
+<p>而在<strong>GUPC</strong>方法里的<strong>PCKG</strong>中，也正是<strong>Zero位置的项</strong>和<strong>One位置的项</strong>决定着端口的<strong>状态</strong>和<strong>类型</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">···</span><br><span class="line">    Name (PCKG, Package (0x04)</span><br><span class="line">    &#123;</span><br><span class="line">        Zero, //Zero位置[决定端口状态]: Zero为关闭，其它值都为开启</span><br><span class="line">        0xFF, //One位置 [决定端口类型]：详细对应可见下面我给出的表</span><br><span class="line">        Zero, //此值为保留，必须为Zero</span><br><span class="line">        Zero  //此值为保留，必须为Zero</span><br><span class="line">    &#125;)</span><br><span class="line">···</span><br></pre></td></tr></table></figure>
+<p><strong>One</strong>位置的值所对应的<strong>端口类型</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">---------------------------</span><br><span class="line">//常用值</span><br><span class="line">0x03  //USB3.0 Type-A</span><br><span class="line">0x09  //TypeC Type C+sw 10</span><br><span class="line">0xFF  //内建 专用连接器</span><br><span class="line">---------------------------</span><br><span class="line">//完整表</span><br><span class="line">0x00  //类型”A”连接器</span><br><span class="line">0x01  //Mini-AB连接器</span><br><span class="line">0x02  //ExpressCard  USB智能卡</span><br><span class="line">0x03  //USB3标注A连接器</span><br><span class="line">0x04  //USB3标注B连接器</span><br><span class="line">0x05  //USB3 Micro-B连接器</span><br><span class="line">0x06  //USB3 Micro-AB连接器</span><br><span class="line">0x07  //USB3 Micro-B连接器</span><br><span class="line">0x08  //USB Type-C (只有 USB 2)</span><br><span class="line">0x09  //USB Type-C (带有转向器)</span><br><span class="line">0x0A  //USB Type-C (不带转向器)</span><br><span class="line">0xFF  //专用连接器 内置</span><br><span class="line">---------------------------</span><br></pre></td></tr></table></figure>
+<p>好了，知道了这些我们就可以正式开始着手定制我们的USB端口了。</p>
+<p>你们看我给出的完整补丁里，定义了一个<strong>USBP</strong>，并赋值为了<strong>Zero</strong>，然后又在GUPC这个方法中添加了语句：<code>USBP += One</code>，让<strong>USBP</strong>的值加上1，其实定义这个<strong>USBP</strong>其实是为了帮我们<strong>定位对应的端口</strong>，由于<strong>GUPC</strong>方法是<strong>Serialized</strong>，所以每次在一个端口调用完<strong>GUPC</strong>后，它并不会重置，所以我们可以添加一个<strong>USBP</strong>，每被一个端口调用一次，<strong>USBP</strong>的值就增加1，那么当第一个端口调用<strong>GUPC</strong>时，<strong>USBP</strong>为<strong>1</strong>，第二个端口再调用时，<strong>USBP</strong>的值就在1的基础上再加1，也就是<strong>2</strong>。</p>
+<p>那么就可以很好理解了，这样的话，每一个端口都会按顺序对应一个相应的<strong>USBP</strong>的值。</p>
+<p>接下来，我们在添加判断语句来确定每个端口的<strong>状态</strong>和<strong>类型</strong>(见上面给出的完整补丁)：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> ···               </span><br><span class="line">     If (((USBP == 0x04) || (Arg0 == Zero)))</span><br><span class="line">     &#123;</span><br><span class="line">         PCKG [Zero] = Zero</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     If ((((USBP == 0x04) || (USBP == 0x05)) || (USBP == 0x06)))</span><br><span class="line">     &#123;</span><br><span class="line">         PCKG [One] = 0xFF</span><br><span class="line">     &#125;</span><br><span class="line">···</span><br></pre></td></tr></table></figure>
+<p>我们来先来理解一下第一段判断语句的意思，就是：</p>
+<ul>
+<li>当 <strong>USBP = 0x04 <strong>或者 <strong>Arg0 = Zero</strong> 的时候，将</strong>PCKG</strong>中<strong>Zero位置</strong>的值覆盖为<strong>Zero</strong>，也就是禁用<strong>第四个端口</strong>和<strong>返回的Arg0的值为Zero的端口</strong>。</li>
+</ul>
+<p>我们再来看第二段判断语句的意思：</p>
+<ul>
+<li>当 <strong>USBP  = 0x04</strong> 或者 <strong>USBP  = 0x05</strong> 或者 <strong>USBP  = 0x06</strong> 的时候，将<strong>PCKG</strong>中<strong>One位置</strong>的项的值覆盖为<strong>0xFF</strong>，也就是把<strong>第四、五、六端口</strong>的类型定义为<strong>内建</strong>。</li>
+</ul>
+<p>当然，我们可以根据自己的需求去写判断语句，以达到我们想定制的效果，哪些端口开，哪些端口关，并定义这些端口的类型。</p>
+<p>最后我们再返回<strong>PCKG</strong>就OK了，添加好<code>If (_OSI (&quot;Darwin&quot;))</code>语句来判定在<strong>macOS</strong>系统下生效，最后我们在<strong>Config</strong>中补充<strong>重命名</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Comment: USB GUPC to XUPC</span><br><span class="line">Find: 47 55 50 43 09</span><br><span class="line">Replace: 58 55 50 43 09</span><br></pre></td></tr></table></figure>
+<h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
+<p>好了，这也是这个教程的主要部分了，希望能给大家定制USB以一个新的方法思路！</p>
+<p>加入博主的Hackintosh交流群：<code>679838716</code></p>
+
+  
+
+
+  </article>
+  
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E7%94%A8%E7%83%AD%E8%A1%A5%E4%B8%81%E9%A9%B1%E5%8A%A8%E4%BD%A0%E7%9A%84%E8%A7%A6%E6%91%B8%E6%9D%BF.html">进阶篇-用热补丁驱动你的触摸板<span class="note">下一篇</span></a><div class="line"></div><a id="prev" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E4%B8%BA%E5%B0%8F%E7%99%BD%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%94%B5%E6%B1%A0%E6%95%99%E7%A8%8B.html">进阶篇-为小白设计的电池教程<span class="note">上一篇</span></a></section></div>
+
+  
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body valine'>
+      
+
+<div id="valine_container" class="valine_thread"><svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+
+    </div>
+  </div>
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="https://hackintool.vercel.app/">@黑果小六</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.4.1" title="v1.4.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.4.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper/swiper-bundle.min.css","js":"https://unpkg.com/swiper/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function getEmojiMaps() {
+    function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+    }
+    var emojiMaps = {};
+    for (var i = 1; i <= 54; i++) {
+      emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+    }
+    for (var i = 1; i <= 101; i++) {
+      emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+    }
+    for (var i = 1; i <= 116; i++) {
+      emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+    }
+    for (var i = 1; i <= 125; i++) {
+      emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+    }
+    for (var i = 1; i <= 4; i++) {
+      emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+    }
+    return emojiMaps;
+  }
+  function load_comment(){
+    if(!document.getElementById("valine_container"))return;
+    stellar.loadScript('https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js', {defer:true}).then(function () {
+      const el = document.getElementById("valine_container");
+      var path = el.getAttribute('comment_id');
+      const placeholder = "踏雪怎无痕？少侠，请留下你的观点！";
+      if (!path) {
+        path = decodeURI(window.location.pathname);
+      }
+      var valine = new Valine();
+      valine.init(Object.assign({"js":"https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js","appId":"Fe8IQPAHLnCOYlAJj9iniimO-gzGzoHsz","appKey":"qNvWByTiszf1JtzWBY2jfUeb","placeholder":"踏雪怎无痕？少侠，请留下你的观点！","requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"mp","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"metaPlaceholder":{"nick":"昵称/QQ号(必填)","mail":"邮箱（如需得到我的追踪，请填写）","link":"网址(https://)"},"master":"md5加密后的博主邮箱 - c47fcf3ef7606331","friends":["6783037F2DF30EAB99F9FC256157D875",null]}, {
+        el: '#valine_container',
+        path: path,
+        placeholder: placeholder,
+        emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+        emojiMaps: getEmojiMaps(),
+      }));
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    load_comment();
+  });
+
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>
