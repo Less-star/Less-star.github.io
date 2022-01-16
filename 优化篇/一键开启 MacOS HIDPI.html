@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>Hackintool：一键开启 MacOS HIDPI - Hackintool</title>
+
+  
+    <meta name="description" content="效果与预览 这个脚本的目的是为中低分辨率的屏幕开启 HIDPI 选项，并且具有原生的 HIDPI 设置，不需要 RDM 软件即可在系统显示器设置中设置MacOS 的 dpi 机制和 win 下不一样，比如 1080p 的屏幕在 win 下有 125%、150% 这样的缩放选项，而同样的屏幕在 MacOS 下，缩放选项里只是单纯的调节分辨率，这就使得在默认分辨率下字体和 UI 看起来很小，降低分辨">
+<meta property="og:type" content="website">
+<meta property="og:title" content="一键开启 MacOS HIDPI">
+<meta property="og:url" content="https://hackintool.vercel.app/%E4%BC%98%E5%8C%96%E7%AF%87/%E4%B8%80%E9%94%AE%E5%BC%80%E5%90%AF%20MacOS%20HIDPI.html">
+<meta property="og:site_name" content="Hackintool">
+<meta property="og:description" content="效果与预览 这个脚本的目的是为中低分辨率的屏幕开启 HIDPI 选项，并且具有原生的 HIDPI 设置，不需要 RDM 软件即可在系统显示器设置中设置MacOS 的 dpi 机制和 win 下不一样，比如 1080p 的屏幕在 win 下有 125%、150% 这样的缩放选项，而同样的屏幕在 MacOS 下，缩放选项里只是单纯的调节分辨率，这就使得在默认分辨率下字体和 UI 看起来很小，降低分辨">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/muzishaoxing/Picture@main/shaoxing/20210921/14:27-gQ9YxR.png">
+<meta property="article:published_time" content="2022-01-13T08:02:11.780Z">
+<meta property="article:modified_time" content="2022-01-03T04:48:58.551Z">
+<meta property="article:author" content="黑果小六">
+<meta property="article:tag" content="黑苹果，教程，Mac">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/muzishaoxing/Picture@main/shaoxing/20210921/14:27-gQ9YxR.png">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="Hackintool" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+    
+      <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/muzishaoxing/Picture@main/uPic/avatar.png">
+    
+      <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/muzishaoxing/Picture@main/uPic/avatar.png">
+    
+  
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='wiki'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap wiki"><a style="filter: grayscale(100%)" class="wiki-home cap" href="/"><svg aria-hidden="true" viewBox="0 0 16 16" width="1rem" height="1rem" fill="currentColor"><path fill-rule="evenodd" d="M7.78 12.53a.75.75 0 01-1.06 0L2.47 8.28a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L4.81 7h7.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"></path></svg>所有项目</a><a class="title" href="/index.html"><div class="main">Hackintool</div><div class="sub cap">黑苹果教程合集</div></a></div>
+</header>
+
+<div class="widgets">
+
+<div class="widget-wrap multi" id="toc"><div class="widget-header cap dis-select"><span class="name">序章</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/index.html"><span class="toc-text">黑苹果资源召集令</span></a></div></div><div class="widget-header cap dis-select"><span class="name">基础篇</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E9%BB%91%E8%8B%B9%E6%9E%9C(%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F).html"><span class="toc-text">黑苹果 （操作系统）</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E5%9F%BA%E7%A1%80%E7%A7%91%E6%99%AE.html"><span class="toc-text">基础科普</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B.html"><span class="toc-text">BigSur安装教程</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99.html"><span class="toc-text">安装报错</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85mac.html"><span class="toc-text">虚拟机安装MAC</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/USB%E5%AE%9A%E5%88%B6%E6%95%99%E7%A8%8B.html"><span class="toc-text">USB定制教程</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E7%BD%91%E5%8D%A1%E9%A9%B1%E5%8A%A8%E6%B8%85%E5%8D%95.html"><span class="toc-text">网卡驱动汇总</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E4%BD%BF%E7%94%A8OpenCore%E5%BC%95%E5%AF%BC%E9%BB%91%E8%8B%B9%E6%9E%9C.html"><span class="toc-text">使用 OpenCore 引导黑苹果</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%85%B1%E5%AD%98.html"><span class="toc-text">黑苹果与Windows双系统共存设置</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/RTC%E7%9A%84%E9%97%AE%E9%A2%98%E8%A1%A8%E7%8E%B0.html"><span class="toc-text">RTC综述</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/macOS%20Monterey%2012.1Beat%E7%89%88%E6%9C%AC%E5%BC%80%E5%A7%8B%E6%94%AF%E6%8C%81.html"><span class="toc-text">独显支持列表</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E4%BD%BF%E7%94%A8%E7%94%A8gibMacOS%E5%9B%BE%E6%96%87%E5%AE%89%E8%A3%85%E9%BB%91%E8%8B%B9%E6%9E%9C.html"><span class="toc-text">使用用gibMacOS图文安装黑苹果</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E5%9F%BA%E7%A1%80%E7%AF%87/%E5%A3%B0%E5%8D%A1ID%E6%B3%A8%E5%85%A5%E8%A1%A8.html"><span class="toc-text">黑苹果声卡ID注入表</span></a></div></div><div class="widget-header cap dis-select"><span class="name">优化篇</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/%E4%BC%98%E5%8C%96%E7%AF%87/Mac%20%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE.html"><span class="toc-text">Windows键盘-Mac快捷键</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E4%BC%98%E5%8C%96%E7%AF%87/%E4%BF%AE%E5%A4%8DApple%E7%99%BB%E9%99%86.html"><span class="toc-text">黑苹果之登陆Apple_ID「设备内建」</span></a></div><div class="doc-tree active"><a class="doc-tree-link active" href="/%E4%BC%98%E5%8C%96%E7%AF%87/%E4%B8%80%E9%94%AE%E5%BC%80%E5%90%AF%20MacOS%20HIDPI.html"><span class="toc-text">一键开启 MacOS HIDPI</span></a><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%88%E6%9E%9C%E4%B8%8E%E9%A2%84%E8%A7%88"><span class="toc-text"> 效果与预览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="toc-text"> 使用教程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text"> 远程模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%A8%A1%E5%BC%8F"><span class="toc-text"> 本地模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%A4%BA%E8%8C%83"><span class="toc-text"> 使用示范</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%81%A2%E5%A4%8D"><span class="toc-text"> 恢复</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E5%9B%9E%E5%A4%8D"><span class="toc-text"> 命令回复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%81%A2%E5%A4%8D%E6%A8%A1%E5%BC%8F"><span class="toc-text"> 恢复模式</span></a></li></ol></li></ol></div><div class="doc-tree"><a class="doc-tree-link" href="/%E4%BC%98%E5%8C%96%E7%AF%87/%E8%A7%A3%E5%86%B3%E7%BD%91%E7%BB%9C%E5%94%A4%E9%86%92Wi-Fi%E9%97%AE%E9%A2%98.html"><span class="toc-text">解决网络唤醒Wi-Fi问题</span></a></div></div><div class="widget-header cap dis-select"><span class="name">美化篇</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/%E7%BE%8E%E5%8C%96%E7%AF%87/Mac%E4%B8%AA%E6%80%A7%E5%8C%96%E5%92%8C%E7%BE%8E%E5%8C%96.html"><span class="toc-text">美化篇-系统logo自定义</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E7%BE%8E%E5%8C%96%E7%AF%87/%E9%BB%91%E8%8B%B9%E6%9E%9C%E4%BB%BF%E5%86%92%E7%99%BD%E6%9E%9C%E9%BC%A0%E6%A0%87.html"><span class="toc-text">美化篇-黑苹果仿冒白果鼠标</span></a></div></div><div class="widget-header cap dis-select"><span class="name">进阶篇</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E7%94%B5%E6%B1%A0%E7%83%AD%E8%A1%A5%E4%B8%81.html"><span class="toc-text">进阶篇-电池热补丁</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E4%B8%BA%E5%B0%8F%E7%99%BD%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%94%B5%E6%B1%A0%E6%95%99%E7%A8%8B.html"><span class="toc-text">进阶篇-为小白设计的电池教程</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E5%88%A9%E7%94%A8GUPC%E4%BB%A5%E7%83%AD%E8%A1%A5%E4%B8%81%E5%AE%9A%E5%88%B6USB%E7%AB%AF%E5%8F%A3.html"><span class="toc-text">进阶篇-利用GUPC以热补丁定制USB端口</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E7%94%A8%E7%83%AD%E8%A1%A5%E4%B8%81%E9%A9%B1%E5%8A%A8%E4%BD%A0%E7%9A%84%E8%A7%A6%E6%91%B8%E6%9D%BF.html"><span class="toc-text">进阶篇-用热补丁驱动你的触摸板</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E8%AE%A1%E7%AE%97Slide%E8%A7%A3%E5%86%B3%E5%86%85%E5%AD%98%E6%8A%A5%E9%94%99.html"><span class="toc-text">进阶篇-计算Slide解决内存报错</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E5%A6%82%E4%BD%95%E7%AE%80%E5%8D%95%E7%9A%84%E7%BC%96%E8%AF%91OpenCore.html"><span class="toc-text">进阶篇-如何简单的编译OpenCore</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E5%88%A9%E7%94%A8%20AppleALC%20%E9%A9%B1%E5%8A%A8%E5%A3%B0%E5%8D%A1.html"><span class="toc-text">进阶篇-利用 AppleALC 驱动声卡</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/%E8%BF%9B%E9%98%B6%E7%AF%87/%E8%8B%B1%E7%89%B9%E5%B0%94%E7%BD%91%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%B2%BE%E7%AE%80.html"><span class="toc-text">进阶篇-英特尔网卡驱动精简</span></a></div></div></div>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+  
+  
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" id="home" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" id="menu" href="/wiki/">项目</a><span class="sep"></span><a class="cap breadcrumb" id="proj" href="/index.html">Hackintool</a></div><div id="post-meta">更新于&nbsp;<time datetime="2022-01-03T04:48:58.551Z">2022-01-03</time></div></div>
+
+  <article class='content md wiki'>
+  <h1 class="article-title"><span>一键开启 MacOS HIDPI</span></h1>
+  <h2 id="效果与预览"><a class="markdownIt-Anchor" href="#效果与预览"></a> 效果与预览</h2>
+<p>这个脚本的目的是为中低分辨率的屏幕开启 HIDPI 选项，并且具有原生的 HIDPI 设置，不需要 RDM 软件即可在系统显示器设置中设置MacOS 的 dpi 机制和 win 下不一样，比如 1080p 的屏幕在 win 下有 125%、150% 这样的缩放选项，而同样的屏幕在 MacOS 下，缩放选项里只是单纯的调节分辨率，这就使得在默认分辨率下字体和 UI 看起来很小，降低分辨率又显得模糊。</p>
+<p>同时，此脚本也可以通过注入修补后的 EDID 修复闪屏，或者睡眠唤醒后的闪屏问题，当然这个修复因人而异（如4400-4600）</p>
+<p>脚本发布<a target="_blank" rel="noopener" href="https://github.com/xzhih/one-key-hidpi">项目地址</a><br />
+<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/muzishaoxing/Picture@main/shaoxing/20210921/14:27-gQ9YxR.png" alt="14:27-gQ9YxR" /></p>
+<h2 id="使用教程"><a class="markdownIt-Anchor" href="#使用教程"></a> 使用教程</h2>
+<h3 id="远程模式"><a class="markdownIt-Anchor" href="#远程模式"></a> 远程模式</h3>
+<ul>
+<li>在终端输入以下命令回车即可。</li>
+</ul>
+<div class="tag-plugin copy"><input class="copy-area" readonly id="copy_1" value="bash -c $(curl -fsSL https://raw.githubusercontent.com/xzhih/one-key-hidpi/master/hidpi.sh)"><button class="copy-btn" onclick="util.copy(&quot;copy_1&quot;,&quot;Copied!&quot;)"><svg class="icon copy-btn" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg></button></div>
+<h3 id="本地模式"><a class="markdownIt-Anchor" href="#本地模式"></a> 本地模式</h3>
+<ul>
+<li>下载one-key-hidpi-master项目解压,双击<strong>hidpi.command</strong>运行
+<ul>
+<li><a target="_blank" rel="noopener" href="https://shoaling.lanzoui.com/imB4Amaeete">蓝奏云下载</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/xzhih/one-key-hidpi">官方项目下载</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="使用示范"><a class="markdownIt-Anchor" href="#使用示范"></a> 使用示范</h3>
+<ol>
+<li>打开<kbd>打开hidpi.command</kbd></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Last login: Sun Feb 28 19:33:45 on ttys000</span><br><span class="line">/Users/*****Downloads/one-key-hidpi-master/hidpi.command ; exit;           </span><br><span class="line">*****@*****deMacBook-Pro ~ % /Users/*****/Downloads/one-key-hidpi-master/hidpi.command ; exit;</span><br><span class="line">  _    _   _____   _____    _____    _____ </span><br><span class="line"> | |  | | |_   _| |  __ \  |  __ \  |_   _|</span><br><span class="line"> | |__| |   | |   | |  | | | |__) |   | |  </span><br><span class="line"> |  __  |   | |   | |  | | |  ___/    | |  </span><br><span class="line"> | |  | |  _| |_  | |__| | | |       _| |_ </span><br><span class="line"> |_|  |_| |_____| |_____/  |_|      |_____|</span><br><span class="line">                                           </span><br><span class="line">============================================</span><br><span class="line"></span><br><span class="line">(1) 开启HIDPI</span><br><span class="line">(2) 开启HIDPI(同时注入EDID)</span><br><span class="line">(3) 关闭HIDPI</span><br><span class="line"></span><br><span class="line">输入你的选择 [1~3]:</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>输入你的选择。<psw>如:2</psw></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-------------------------------------</span><br><span class="line">|********** 选择显示器ICON ***********|</span><br><span class="line">-------------------------------------</span><br><span class="line"></span><br><span class="line">(1) iMac</span><br><span class="line">(2) MacBook</span><br><span class="line">(3) MacBook Pro</span><br><span class="line">(4) LG 显示器</span><br><span class="line">(5) Pro Display XDR</span><br><span class="line">(6) 保持原样</span><br><span class="line"></span><br><span class="line">输入你的选择 [1~6]:</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>选择你想模拟的的显示器ICON图标，<psw>如：3</psw>（<u>此后需要输入密码</u>）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">------------------------------------------</span><br><span class="line">|********** 选择分辨率配置 ***********|</span><br><span class="line">------------------------------------------</span><br><span class="line">(1) 1920x1080 显示屏</span><br><span class="line">(2) 1920x1080 显示屏 (使用 1424x802 分辨率，修复睡眠唤醒后的屏幕缩小问题)</span><br><span class="line">(3) 1920x1200 显示屏</span><br><span class="line">(4) 2560x1440 显示屏</span><br><span class="line">(5) 3000x2000 显示屏</span><br><span class="line">(6) 手动输入分辨率</span><br><span class="line"></span><br><span class="line">输入你的选择:</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>选择合适的分辨率<psw>（1？2？3？4？5？）或者自定义（6？）</psw></li>
+<li>因为上面没有适合我的分辨率，故我选择自定义“6”并输入开启HIDPI的分辨率,输入密码回车键后。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入你的选择: 6</span><br><span class="line">输入想要开启的 HIDPI 分辨率，用空格隔开，就像这样：1680x945 1600x900 1440x810</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>出现以下界面重启测试，如不开机或异常，请参考<a href="#%E6%81%A2%E5%A4%8D">恢复</a></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">开启成功，重启生效</span><br><span class="line">首次重启开机logo会变得巨大，之后就不会了</span><br><span class="line">Saving session...</span><br><span class="line">...copying shared history...</span><br><span class="line">...saving history...truncating history files...</span><br><span class="line">...completed.</span><br><span class="line">Deleting expired sessions...       8 completed.</span><br><span class="line"></span><br><span class="line">[进程已完成]</span><br></pre></td></tr></table></figure>
+<h2 id="恢复"><a class="markdownIt-Anchor" href="#恢复"></a> 恢复</h2>
+<h3 id="命令回复"><a class="markdownIt-Anchor" href="#命令回复"></a> 命令回复</h3>
+<ul>
+<li>如果还能进系统，就再次运行命令选择选项 3 关闭 HIDPI。</li>
+</ul>
+<h3 id="恢复模式"><a class="markdownIt-Anchor" href="#恢复模式"></a> 恢复模式</h3>
+<ul>
+<li>如果使用此脚本后，开机无法进入系统，请到 <strong>macos恢复模式</strong>，打开<strong>终端</strong>。</li>
+<li>这里有两种方式进行关闭，建议选<strong>第一种</strong></li>
+</ul>
+<ol>
+<li>快捷恢复</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ls /Volumes/           //查看你的系统盘</span><br><span class="line">cd /Volumes/你的系统盘/Users/</span><br><span class="line"></span><br><span class="line">ls                    //你可以看到所有用户的目录</span><br><span class="line"></span><br><span class="line">cd 你的用户名</span><br><span class="line"></span><br><span class="line">./.hidpi-disable</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>手动恢复
+<ul>
+<li>使用终端删除<strong>Library/Displays/Contents/Resources/Overrides</strong>下删除所有通过外部注入的显示器配置文件夹</li>
+<li>命令如下:</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls /Volumes/</span><br><span class="line">rm -rf /Volumes/你的系统盘/Library/Displays/Contents/Resources/Overrides</span><br></pre></td></tr></table></figure>
+
+  
+
+
+  </article>
+  
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/%E7%BE%8E%E5%8C%96%E7%AF%87/Mac%E4%B8%AA%E6%80%A7%E5%8C%96%E5%92%8C%E7%BE%8E%E5%8C%96.html">美化篇-系统logo自定义<span class="note">下一篇</span></a><div class="line"></div><a id="prev" href="/%E4%BC%98%E5%8C%96%E7%AF%87/%E4%BF%AE%E5%A4%8DApple%E7%99%BB%E9%99%86.html">黑苹果之登陆Apple_ID「设备内建」<span class="note">上一篇</span></a></section></div>
+
+  
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body valine'>
+      
+
+<div id="valine_container" class="valine_thread"><svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+
+    </div>
+  </div>
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="https://hackintool.vercel.app/">@黑果小六</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.4.1" title="v1.4.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.4.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper/swiper-bundle.min.css","js":"https://unpkg.com/swiper/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function getEmojiMaps() {
+    function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+    }
+    var emojiMaps = {};
+    for (var i = 1; i <= 54; i++) {
+      emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+    }
+    for (var i = 1; i <= 101; i++) {
+      emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+    }
+    for (var i = 1; i <= 116; i++) {
+      emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+    }
+    for (var i = 1; i <= 125; i++) {
+      emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+    }
+    for (var i = 1; i <= 4; i++) {
+      emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+    }
+    return emojiMaps;
+  }
+  function load_comment(){
+    if(!document.getElementById("valine_container"))return;
+    stellar.loadScript('https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js', {defer:true}).then(function () {
+      const el = document.getElementById("valine_container");
+      var path = el.getAttribute('comment_id');
+      const placeholder = "踏雪怎无痕？少侠，请留下你的观点！";
+      if (!path) {
+        path = decodeURI(window.location.pathname);
+      }
+      var valine = new Valine();
+      valine.init(Object.assign({"js":"https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js","appId":"Fe8IQPAHLnCOYlAJj9iniimO-gzGzoHsz","appKey":"qNvWByTiszf1JtzWBY2jfUeb","placeholder":"踏雪怎无痕？少侠，请留下你的观点！","requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"mp","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"metaPlaceholder":{"nick":"昵称/QQ号(必填)","mail":"邮箱（如需得到我的追踪，请填写）","link":"网址(https://)"},"master":"md5加密后的博主邮箱 - c47fcf3ef7606331","friends":["6783037F2DF30EAB99F9FC256157D875",null]}, {
+        el: '#valine_container',
+        path: path,
+        placeholder: placeholder,
+        emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+        emojiMaps: getEmojiMaps(),
+      }));
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    load_comment();
+  });
+
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>
